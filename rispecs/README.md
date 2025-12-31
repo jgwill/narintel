@@ -9,6 +9,22 @@
 
 ---
 
+## 🙏 Foundational Credits
+
+This stack evolved from the **Indigenous-AI Collaborative Platform (IAIP)** rispecs:
+
+| IAIP Origin | Contribution to NarIntel |
+|-------------|--------------------------|
+| `four-directions.spec.md` | Three-Universe Model (East/South/West/North → Engineer/Ceremony/StoryEngine) |
+| `ceremonial-technology.spec.md` | Five-Phase methodology, Sacred Pause, K'é Protocol |
+| `relational-science.spec.md` | Relational accountability, concentric values model |
+| `iaip-holistic-reasoning-mcp.spec.md` | MCP tool patterns, holistic inquiry cycles |
+| `continuous-companionship-architecture.spec.md` | Persistent context, session continuity |
+
+**See**: `/a/src/IAIP/rispecs/COORDINATION_TO_NARINTEL_CYCLE.md` for full lineage
+
+---
+
 ## 🌟 Vision: What Users Create
 
 This stack enables creators to:
@@ -139,6 +155,26 @@ All specifications build upon the **Narrative Context Protocol (NCP)**:
 | `flowise` flywheel | `langgraph` narrative-intelligence | Uses NCP state for intent classification |
 | `langflow` router | `flowise` flywheel + `langgraph` | Routes to backends using NCP context |
 | All specs | NCP Schema | Core data model |
+
+---
+
+## 📦 Downstream Consumers
+
+### Storytelling Package (`/src/storytelling`)
+
+The `storytelling` package is a primary consumer of the Narrative Intelligence Stack. Its rispecs coordinate with ours:
+
+| Storytelling Rispec | Consumes From NarIntel |
+|---------------------|------------------------|
+| `Narrative_Intelligence_Integration_Specification.md` | `StoryBeat`, `NCPState` from langgraph toolkit |
+| `Character_Arc_Tracking_Specification.md` | `CharacterState` patterns |
+| `Emotional_Beat_Enrichment_Specification.md` | Emits events to langchain tracing |
+| `Analytical_Feedback_Loop_Specification.md` | Uses gap routing, emits analysis events |
+| `Narrative_Aware_Story_Graph_Specification.md` | Orchestration patterns |
+| `Logging_And_Traceability_Specification.md` | Langfuse event taxonomy |
+| `IAIP_Integration_Specification.md` | Ceremony World / K'é alignment |
+
+**Coordination File**: See `/src/storytelling/rispecs/COORDINATION_FROM_NARINTEL_INSTANCE.md`
 
 ---
 

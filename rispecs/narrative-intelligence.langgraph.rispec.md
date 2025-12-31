@@ -683,7 +683,51 @@ LangGraph graph that processes events through all three universe lenses.
 
 ---
 
-## 11. Extension Points
+## 11. Storytelling Package Integration
+
+The `storytelling` package (`/src/storytelling`) is a primary consumer of this toolkit.
+
+### Consumer Components
+
+| Storytelling Component | Uses From This Toolkit |
+|------------------------|------------------------|
+| `NCPAwareStoryGenerator` | `StoryBeat`, `NCPState`, `Player`, `Perspective` |
+| `CharacterArcTracker` | Pattern from `CharacterState`, arc_position tracking |
+| `EmotionalBeatEnricher` | Beat analysis and classification patterns |
+| `AnalyticalFeedbackLoop` | Gap identification, routing to enrichment |
+| `NarrativeAwareStoryGraph` | LangGraph orchestration patterns |
+
+### Type Alignment
+
+StoryBeat in storytelling should include `universe_analysis` field:
+
+```python
+# Storytelling consumer pattern
+@dataclass
+class StoryBeat:
+    beat_id: str
+    beat_index: int
+    raw_text: str
+    # ... existing fields ...
+    universe_analysis: Optional[ThreeUniverseAnalysis]  # From unified_state_bridge
+```
+
+### Event Emission
+
+Storytelling emits events consumed by the tracing layer:
+
+| Event | Emitted By | Received By |
+|-------|------------|-------------|
+| `BEAT_GENERATED` | NCPAwareStoryGenerator | narrative-tracing |
+| `EMOTIONAL_QUALITY_ASSESSED` | EmotionalBeatEnricher | narrative-tracing |
+| `CHARACTER_ARC_UPDATED` | CharacterArcTracker | narrative-tracing |
+| `GAP_IDENTIFIED` | AnalyticalFeedbackLoop | narrative-tracing |
+
+**Coordination**: See `/src/storytelling/rispecs/COORDINATION_FROM_NARINTEL_INSTANCE.md`
+
+---
+
+## 12. Extension Points
 
 ### Adding New Traversal Modes
 ```python

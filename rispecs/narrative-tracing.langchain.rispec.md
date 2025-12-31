@@ -491,4 +491,59 @@ routing_key = RedisKeys.routing_history(session_id)  # → "ncp:routing:{session
 
 ---
 
+## 9. Storytelling Package Integration
+
+The `storytelling` package (`/src/storytelling`) is a primary **event emitter** for this tracing layer.
+
+### Event Sources from Storytelling
+
+| Storytelling Component | Events Emitted |
+|------------------------|----------------|
+| `NCPAwareStoryGenerator` | `BEAT_CREATED`, `NARRATIVE_CHECKPOINT` |
+| `EmotionalBeatEnricher` | `BEAT_ANALYZED`, `BEAT_ENRICHED` |
+| `CharacterArcTracker` | `CHARACTER_ARC`, `CHARACTER_ARC_UPDATED` |
+| `AnalyticalFeedbackLoop` | `GAP_IDENTIFIED`, `GAP_REMEDIATED` |
+| `NarrativeAwareStoryGraph` | `AGENT_FLOW_EXECUTED`, workflow spans |
+
+### Integration Pattern
+
+```python
+# In storytelling/narrative_intelligence_integration.py
+from narrative_tracing import NarrativeTracingHandler
+
+class NCPAwareStoryGenerator:
+    def __init__(self, llm_provider, tracer: NarrativeTracingHandler):
+        self.tracer = tracer
+    
+    def generate_beat_with_ncp(self, ...):
+        beat = self._generate(...)
+        self.tracer.log_beat_creation(beat, source="ncp_generator")
+        return beat
+```
+
+### Session Logging Integration
+
+Storytelling's `Logger` and `SessionManager` can integrate with this tracing layer:
+
+```python
+# Optional Langfuse enhancement to existing Logger
+class EnhancedLogger(Logger):
+    def __init__(self, tracer: NarrativeTracingHandler):
+        super().__init__()
+        self.tracer = tracer
+    
+    def log_llm_interaction(self, prompt, response, node_name):
+        super().log_llm_interaction(prompt, response, node_name)
+        # Also emit to Langfuse
+        self.tracer.log_event(
+            event_type="LLM_GENERATION",
+            input_data={"prompt": prompt, "node": node_name},
+            output_data={"response": response}
+        )
+```
+
+**Coordination**: See `/src/storytelling/rispecs/COORDINATION_FROM_NARINTEL_INSTANCE.md`
+
+---
+
 *Generated following RISE Framework v1.2 - Specification is implementation-agnostic*
