@@ -23,12 +23,12 @@ The Narrative Intelligence Toolkit enables creators to:
 
 ### Desired Outcomes
 
-| Outcome | Description | Measurement |
-|---------|-------------|-------------|
-| **Structural Clarity** | Any NCP file becomes a navigable graph | Valid load + traversal in <100ms |
-| **Arc Visibility** | Character journeys rendered as summaries | Markdown output with wound/desire/arc |
-| **Theme Mapping** | Abstract themes traced to concrete beats | Beat IDs linked to perspective IDs |
-| **Emotional Mapping** | Beats classified by tone | Classification with confidence score |
+| Outcome                | Description                              | Measurement                           |
+| ---------------------- | ---------------------------------------- | ------------------------------------- |
+| **Structural Clarity** | Any NCP file becomes a navigable graph   | Valid load + traversal in <100ms      |
+| **Arc Visibility**     | Character journeys rendered as summaries | Markdown output with wound/desire/arc |
+| **Theme Mapping**      | Abstract themes traced to concrete beats | Beat IDs linked to perspective IDs    |
+| **Emotional Mapping**  | Beats classified by tone                 | Classification with confidence score  |
 
 ---
 
@@ -578,12 +578,12 @@ def route_by_analysis_type(state: NCPState) -> str:
 
 ## 8. Dependencies
 
-| Dependency | Purpose |
-|------------|---------|
-| `langgraph` | State graph execution |
-| `pydantic` | Schema validation |
-| `langchain-core` | LLM integration (optional) |
-| `redis` | State persistence (optional) |
+| Dependency       | Purpose                      |
+| ---------------- | ---------------------------- |
+| `langgraph`      | State graph execution        |
+| `pydantic`       | Schema validation            |
+| `langchain-core` | LLM integration (optional)   |
+| `redis`          | State persistence (optional) |
 
 ---
 
@@ -689,13 +689,13 @@ The `storytelling` package (`/src/storytelling`) is a primary consumer of this t
 
 ### Consumer Components
 
-| Storytelling Component | Uses From This Toolkit |
-|------------------------|------------------------|
-| `NCPAwareStoryGenerator` | `StoryBeat`, `NCPState`, `Player`, `Perspective` |
-| `CharacterArcTracker` | Pattern from `CharacterState`, arc_position tracking |
-| `EmotionalBeatEnricher` | Beat analysis and classification patterns |
-| `AnalyticalFeedbackLoop` | Gap identification, routing to enrichment |
-| `NarrativeAwareStoryGraph` | LangGraph orchestration patterns |
+| Storytelling Component     | Uses From This Toolkit                               |
+| -------------------------- | ---------------------------------------------------- |
+| `NCPAwareStoryGenerator`   | `StoryBeat`, `NCPState`, `Player`, `Perspective`     |
+| `CharacterArcTracker`      | Pattern from `CharacterState`, arc_position tracking |
+| `EmotionalBeatEnricher`    | Beat analysis and classification patterns            |
+| `AnalyticalFeedbackLoop`   | Gap identification, routing to enrichment            |
+| `NarrativeAwareStoryGraph` | LangGraph orchestration patterns                     |
 
 ### Type Alignment
 
@@ -716,12 +716,12 @@ class StoryBeat:
 
 Storytelling emits events consumed by the tracing layer:
 
-| Event | Emitted By | Received By |
-|-------|------------|-------------|
-| `BEAT_GENERATED` | NCPAwareStoryGenerator | narrative-tracing |
-| `EMOTIONAL_QUALITY_ASSESSED` | EmotionalBeatEnricher | narrative-tracing |
-| `CHARACTER_ARC_UPDATED` | CharacterArcTracker | narrative-tracing |
-| `GAP_IDENTIFIED` | AnalyticalFeedbackLoop | narrative-tracing |
+| Event                        | Emitted By             | Received By       |
+| ---------------------------- | ---------------------- | ----------------- |
+| `BEAT_GENERATED`             | NCPAwareStoryGenerator | narrative-tracing |
+| `EMOTIONAL_QUALITY_ASSESSED` | EmotionalBeatEnricher  | narrative-tracing |
+| `CHARACTER_ARC_UPDATED`      | CharacterArcTracker    | narrative-tracing |
+| `GAP_IDENTIFIED`             | AnalyticalFeedbackLoop | narrative-tracing |
 
 **Coordination**: See `/src/storytelling/rispecs/COORDINATION_FROM_NARINTEL_INSTANCE.md`
 

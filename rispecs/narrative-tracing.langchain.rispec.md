@@ -2,10 +2,25 @@
 
 > **RISE Specification for `langchain/integrations/narrative_tracing`**
 
-**Version**: 1.0  
+**Version**: 1.1  
 **Last Updated**: 2025-12-31  
 **Package**: `langchain-narrative-tracing`  
-**Location**: `/workspace/langchain/integrations/`
+**Location**: `/workspace/langchain/libs/narrative-tracing/`  
+**Status**: ✅ IMPLEMENTED
+
+---
+
+## Implementation Status
+
+| Component | Status | Lines | Tests |
+|-----------|--------|-------|-------|
+| `event_types.py` | ✅ Complete | ~330 | 9 |
+| `handler.py` | ✅ Complete | ~670 | 4 |
+| `orchestrator.py` | ✅ Complete | ~650 | 4 |
+| `formatter.py` | ✅ Complete | ~560 | 4 |
+| **Total** | ✅ Complete | ~2,210 | 22 |
+
+See: `COORDINATION_FROM_LANGCHAIN_INSTANCE.md` for integration details
 
 ---
 
@@ -23,12 +38,12 @@ The Narrative Tracing Integration enables creators to:
 
 ### Desired Outcomes
 
-| Outcome | Description | Measurement |
-|---------|-------------|-------------|
-| **Full Visibility** | Every narrative operation traced | 100% operation coverage |
-| **Semantic Clarity** | Spans named by narrative function | Human-readable trace trees |
-| **Cross-Stack Correlation** | Trace IDs flow through all systems | Single root → all children |
-| **Creative Learning** | Past traces inform future generation | Retrievable by story_id |
+| Outcome                     | Description                          | Measurement                |
+| --------------------------- | ------------------------------------ | -------------------------- |
+| **Full Visibility**         | Every narrative operation traced     | 100% operation coverage    |
+| **Semantic Clarity**        | Spans named by narrative function    | Human-readable trace trees |
+| **Cross-Stack Correlation** | Trace IDs flow through all systems   | Single root → all children |
+| **Creative Learning**       | Past traces inform future generation | Retrievable by story_id    |
 
 ---
 
@@ -473,21 +488,21 @@ routing_key = RedisKeys.routing_history(session_id)  # → "ncp:routing:{session
 
 ## 7. Dependencies
 
-| Dependency | Purpose |
-|------------|---------|
-| `langfuse` | Trace storage and UI |
+| Dependency       | Purpose              |
+| ---------------- | -------------------- |
+| `langfuse`       | Trace storage and UI |
 | `langchain-core` | Callback integration |
-| `pydantic` | Schema validation |
+| `pydantic`       | Schema validation    |
 
 ---
 
 ## 8. Integration with Other Specifications
 
-| Specification | Integration Point |
-|---------------|-------------------|
+| Specification                      | Integration Point              |
+| ---------------------------------- | ------------------------------ |
 | `narrative-intelligence.langgraph` | Traces NCP analysis operations |
-| `agentic-flywheel.flowise` | Receives correlation headers |
-| `universal-router.langflow` | Receives correlation headers |
+| `agentic-flywheel.flowise`         | Receives correlation headers   |
+| `universal-router.langflow`        | Receives correlation headers   |
 
 ---
 
@@ -497,13 +512,13 @@ The `storytelling` package (`/src/storytelling`) is a primary **event emitter** 
 
 ### Event Sources from Storytelling
 
-| Storytelling Component | Events Emitted |
-|------------------------|----------------|
-| `NCPAwareStoryGenerator` | `BEAT_CREATED`, `NARRATIVE_CHECKPOINT` |
-| `EmotionalBeatEnricher` | `BEAT_ANALYZED`, `BEAT_ENRICHED` |
-| `CharacterArcTracker` | `CHARACTER_ARC`, `CHARACTER_ARC_UPDATED` |
-| `AnalyticalFeedbackLoop` | `GAP_IDENTIFIED`, `GAP_REMEDIATED` |
-| `NarrativeAwareStoryGraph` | `AGENT_FLOW_EXECUTED`, workflow spans |
+| Storytelling Component     | Events Emitted                           |
+| -------------------------- | ---------------------------------------- |
+| `NCPAwareStoryGenerator`   | `BEAT_CREATED`, `NARRATIVE_CHECKPOINT`   |
+| `EmotionalBeatEnricher`    | `BEAT_ANALYZED`, `BEAT_ENRICHED`         |
+| `CharacterArcTracker`      | `CHARACTER_ARC`, `CHARACTER_ARC_UPDATED` |
+| `AnalyticalFeedbackLoop`   | `GAP_IDENTIFIED`, `GAP_REMEDIATED`       |
+| `NarrativeAwareStoryGraph` | `AGENT_FLOW_EXECUTED`, workflow spans    |
 
 ### Integration Pattern
 

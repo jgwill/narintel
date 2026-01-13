@@ -23,12 +23,12 @@ The Agentic Flywheel enables creators to:
 
 ### Desired Outcomes
 
-| Outcome | Description | Measurement |
-|---------|-------------|-------------|
-| **Narrative-Aware Routing** | Queries routed by story context | Route accuracy vs. narrative position |
-| **Quality-Driven Selection** | Flows selected to improve weak areas | Quality score improvement |
-| **Arc Continuity** | Sessions maintain character knowledge | Arc consistency across calls |
-| **Intelligent Enrichment** | Beats improved based on gap analysis | Before/after quality delta |
+| Outcome                      | Description                           | Measurement                           |
+| ---------------------------- | ------------------------------------- | ------------------------------------- |
+| **Narrative-Aware Routing**  | Queries routed by story context       | Route accuracy vs. narrative position |
+| **Quality-Driven Selection** | Flows selected to improve weak areas  | Quality score improvement             |
+| **Arc Continuity**           | Sessions maintain character knowledge | Arc consistency across calls          |
+| **Intelligent Enrichment**   | Beats improved based on gap analysis  | Before/after quality delta            |
 
 ---
 
@@ -426,22 +426,22 @@ async def traced_flow_execution(flow: FlowRoute, query: EnrichedQuery, trace_id:
 
 ## 7. Dependencies
 
-| Dependency | Purpose |
-|------------|---------|
+| Dependency               | Purpose                |
+| ------------------------ | ---------------------- |
 | `narrative-intelligence` | NCP state and analysis |
-| `flowise-client` | Flow execution |
-| `redis` | Session persistence |
-| `pydantic` | Schema validation |
+| `flowise-client`         | Flow execution         |
+| `redis`                  | Session persistence    |
+| `pydantic`               | Schema validation      |
 
 ---
 
 ## 8. Integration with Other Specifications
 
-| Specification | Integration Point |
-|---------------|-------------------|
+| Specification                      | Integration Point                       |
+| ---------------------------------- | --------------------------------------- |
 | `narrative-intelligence.langgraph` | Provides NCPState for routing decisions |
-| `narrative-tracing.langchain` | Receives trace correlation headers |
-| `universal-router.langflow` | Alternative backend for flows |
+| `narrative-tracing.langchain`      | Receives trace correlation headers      |
+| `universal-router.langflow`        | Alternative backend for flows           |
 
 ---
 

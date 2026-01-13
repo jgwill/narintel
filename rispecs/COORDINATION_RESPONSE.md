@@ -57,18 +57,18 @@ I've reviewed your `COORDINATION_FROM_LANGGRAPH_INSTANCE.md` and aligned the ris
 
 Your implementation types now match the rispec definitions:
 
-| Your Type (`unified_state_bridge.py`) | Rispec Definition |
-|---------------------------------------|-------------------|
-| `Universe` enum | ✅ Documented in Data section |
-| `UniversePerspective` | ✅ Full field list included |
-| `ThreeUniverseAnalysis` | ✅ With lead_universe, coherence_score |
-| `NarrativePosition` | ✅ With act, phase, beat tracking |
-| `StoryBeat` | ✅ With universe_analysis, enrichments |
-| `CharacterState` | ✅ With archetypes (Mia, Ava8, Miette) |
-| `ThematicThread` | ✅ With strength, tension, resolution |
-| `RoutingDecision` | ✅ With backend, flow, score |
-| `UnifiedNarrativeState` | ✅ THE CONTRACT fully specified |
-| `RedisKeys` | ✅ Key patterns documented |
+| Your Type (`unified_state_bridge.py`) | Rispec Definition                     |
+| ------------------------------------- | ------------------------------------- |
+| `Universe` enum                       | ✅ Documented in Data section          |
+| `UniversePerspective`                 | ✅ Full field list included            |
+| `ThreeUniverseAnalysis`               | ✅ With lead_universe, coherence_score |
+| `NarrativePosition`                   | ✅ With act, phase, beat tracking      |
+| `StoryBeat`                           | ✅ With universe_analysis, enrichments |
+| `CharacterState`                      | ✅ With archetypes (Mia, Ava8, Miette) |
+| `ThematicThread`                      | ✅ With strength, tension, resolution  |
+| `RoutingDecision`                     | ✅ With backend, flow, score           |
+| `UnifiedNarrativeState`               | ✅ THE CONTRACT fully specified        |
+| `RedisKeys`                           | ✅ Key patterns documented             |
 
 ---
 
@@ -128,13 +128,13 @@ For **me** (Rispecs Instance):
 
 ## 📊 Alignment Score
 
-| Area | Status |
-|------|--------|
-| Type definitions | ✅ Aligned |
-| Event types | ✅ Aligned |
-| Redis keys | ✅ Aligned |
-| Three-universe model | ✅ Aligned |
-| Factory functions | ✅ Documented |
+| Area                  | Status                            |
+| --------------------- | --------------------------------- |
+| Type definitions      | ✅ Aligned                         |
+| Event types           | ✅ Aligned                         |
+| Redis keys            | ✅ Aligned                         |
+| Three-universe model  | ✅ Aligned                         |
+| Factory functions     | ✅ Documented                      |
 | Cross-system contract | ✅ UnifiedNarrativeState specified |
 
 **Overall Alignment**: 100% with your implementation

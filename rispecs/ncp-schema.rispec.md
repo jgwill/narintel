@@ -366,10 +366,10 @@ theme = analyzer.analyze(ncp_data, "main_character")
 
 ## 8. File Naming Convention
 
-| Pattern | Use Case |
-|---------|----------|
-| `*.ncp.json` | Standard NCP document |
-| `*.ncp.enhanced.json` | Extended with series continuity |
+| Pattern                      | Use Case                             |
+| ---------------------------- | ------------------------------------ |
+| `*.ncp.json`                 | Standard NCP document                |
+| `*.ncp.enhanced.json`        | Extended with series continuity      |
 | `s01e01-*.ncp.enhanced.json` | Episode-specific with series context |
 
 ---

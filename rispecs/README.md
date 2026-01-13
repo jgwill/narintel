@@ -13,13 +13,13 @@
 
 This stack evolved from the **Indigenous-AI Collaborative Platform (IAIP)** rispecs:
 
-| IAIP Origin | Contribution to NarIntel |
-|-------------|--------------------------|
-| `four-directions.spec.md` | Three-Universe Model (East/South/West/North → Engineer/Ceremony/StoryEngine) |
-| `ceremonial-technology.spec.md` | Five-Phase methodology, Sacred Pause, K'é Protocol |
-| `relational-science.spec.md` | Relational accountability, concentric values model |
-| `iaip-holistic-reasoning-mcp.spec.md` | MCP tool patterns, holistic inquiry cycles |
-| `continuous-companionship-architecture.spec.md` | Persistent context, session continuity |
+| IAIP Origin                                     | Contribution to NarIntel                                                     |
+| ----------------------------------------------- | ---------------------------------------------------------------------------- |
+| `four-directions.spec.md`                       | Three-Universe Model (East/South/West/North → Engineer/Ceremony/StoryEngine) |
+| `ceremonial-technology.spec.md`                 | Five-Phase methodology, Sacred Pause, K'é Protocol                           |
+| `relational-science.spec.md`                    | Relational accountability, concentric values model                           |
+| `iaip-holistic-reasoning-mcp.spec.md`           | MCP tool patterns, holistic inquiry cycles                                   |
+| `continuous-companionship-architecture.spec.md` | Persistent context, session continuity                                       |
 
 **See**: `/a/src/IAIP/rispecs/COORDINATION_TO_NARINTEL_CYCLE.md` for full lineage
 
@@ -41,28 +41,34 @@ This stack enables creators to:
 
 ### Foundation
 
-| Specification | Description |
-|---------------|-------------|
+| Specification                                | Description                                                     |
+| -------------------------------------------- | --------------------------------------------------------------- |
 | [ncp-schema.rispec.md](ncp-schema.rispec.md) | Narrative Context Protocol - Core data model for all components |
 
 ### Core Toolkit (LangGraph)
 
-| Specification | Package | Description |
-|---------------|---------|-------------|
-| [narrative-intelligence.langgraph.rispec.md](narrative-intelligence.langgraph.rispec.md) | `langgraph/libs/narrative-intelligence` | Core NCP analysis toolkit with nodes and graphs |
+| Specification                                                                            | Package                                 | Description                                     | Status |
+| ---------------------------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------- | ------ |
+| [narrative-intelligence.langgraph.rispec.md](narrative-intelligence.langgraph.rispec.md) | `langgraph/libs/narrative-intelligence` | Core NCP analysis toolkit with nodes and graphs | ✅ 98% |
 
 ### Tracing Layer (LangChain)
 
-| Specification | Package | Description |
-|---------------|---------|-------------|
-| [narrative-tracing.langchain.rispec.md](narrative-tracing.langchain.rispec.md) | `langchain/integrations` | Narrative-aware Langfuse integration |
+| Specification                                                                  | Package                               | Description                          | Status |
+| ------------------------------------------------------------------------------ | ------------------------------------- | ------------------------------------ | ------ |
+| [narrative-tracing.langchain.rispec.md](narrative-tracing.langchain.rispec.md) | `langchain/libs/narrative-tracing`    | Narrative-aware Langfuse integration | ✅ Complete |
 
 ### Agent Coordination Layer
 
-| Specification | Package | Description |
-|---------------|---------|-------------|
-| [agentic-flywheel.flowise.rispec.md](agentic-flywheel.flowise.rispec.md) | `ava-Flowise` | Narrative intent classification and flow routing |
-| [universal-router.langflow.rispec.md](universal-router.langflow.rispec.md) | `ava-langflow` | Three-universe handler and backend abstraction |
+| Specification                                                              | Package        | Description                                      | Status |
+| -------------------------------------------------------------------------- | -------------- | ------------------------------------------------ | ------ |
+| [agentic-flywheel.flowise.rispec.md](agentic-flywheel.flowise.rispec.md)   | `ava-Flowise`  | Narrative intent classification and flow routing | 🔴 Spec Only |
+| [universal-router.langflow.rispec.md](universal-router.langflow.rispec.md) | `ava-langflow` | Three-universe handler and backend abstraction   | 🟡 ~70% |
+
+### Human-AI Collaboration
+
+| Specification                                                                      | Package        | Description                                          | Status |
+| ---------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------- | ------ |
+| [storytelling-roles-tooling.rispec.md](storytelling-roles-tooling.rispec.md)       | `storytelling` | Seven roles (Architect→Witness) and their tool needs | 🟡 ~75% |
 
 ---
 
@@ -149,12 +155,12 @@ All specifications build upon the **Narrative Context Protocol (NCP)**:
 
 ## 📋 Cross-Specification Dependencies
 
-| From Spec | Depends On | Nature of Dependency |
-|-----------|------------|----------------------|
-| `langchain` tracing | `langgraph` narrative-intelligence | Traces NCP analysis operations |
-| `flowise` flywheel | `langgraph` narrative-intelligence | Uses NCP state for intent classification |
-| `langflow` router | `flowise` flywheel + `langgraph` | Routes to backends using NCP context |
-| All specs | NCP Schema | Core data model |
+| From Spec           | Depends On                         | Nature of Dependency                     |
+| ------------------- | ---------------------------------- | ---------------------------------------- |
+| `langchain` tracing | `langgraph` narrative-intelligence | Traces NCP analysis operations           |
+| `flowise` flywheel  | `langgraph` narrative-intelligence | Uses NCP state for intent classification |
+| `langflow` router   | `flowise` flywheel + `langgraph`   | Routes to backends using NCP context     |
+| All specs           | NCP Schema                         | Core data model                          |
 
 ---
 
@@ -164,15 +170,15 @@ All specifications build upon the **Narrative Context Protocol (NCP)**:
 
 The `storytelling` package is a primary consumer of the Narrative Intelligence Stack. Its rispecs coordinate with ours:
 
-| Storytelling Rispec | Consumes From NarIntel |
-|---------------------|------------------------|
+| Storytelling Rispec                                   | Consumes From NarIntel                         |
+| ----------------------------------------------------- | ---------------------------------------------- |
 | `Narrative_Intelligence_Integration_Specification.md` | `StoryBeat`, `NCPState` from langgraph toolkit |
-| `Character_Arc_Tracking_Specification.md` | `CharacterState` patterns |
-| `Emotional_Beat_Enrichment_Specification.md` | Emits events to langchain tracing |
-| `Analytical_Feedback_Loop_Specification.md` | Uses gap routing, emits analysis events |
-| `Narrative_Aware_Story_Graph_Specification.md` | Orchestration patterns |
-| `Logging_And_Traceability_Specification.md` | Langfuse event taxonomy |
-| `IAIP_Integration_Specification.md` | Ceremony World / K'é alignment |
+| `Character_Arc_Tracking_Specification.md`             | `CharacterState` patterns                      |
+| `Emotional_Beat_Enrichment_Specification.md`          | Emits events to langchain tracing              |
+| `Analytical_Feedback_Loop_Specification.md`           | Uses gap routing, emits analysis events        |
+| `Narrative_Aware_Story_Graph_Specification.md`        | Orchestration patterns                         |
+| `Logging_And_Traceability_Specification.md`           | Langfuse event taxonomy                        |
+| `IAIP_Integration_Specification.md`                   | Ceremony World / K'é alignment                 |
 
 **Coordination File**: See `/src/storytelling/rispecs/COORDINATION_FROM_NARINTEL_INSTANCE.md`
 
@@ -182,13 +188,13 @@ The `storytelling` package is a primary consumer of the Narrative Intelligence S
 
 These specifications enable:
 
-| Pattern | Description | Enabled By |
-|---------|-------------|------------|
-| **Arc Tracking** | Character development monitored across beats | `narrative-intelligence` |
-| **Theme Threading** | Thematic tensions traced through story | `narrative-intelligence` |
-| **Emotional Mapping** | Emotional landscape visualized | `narrative-intelligence` |
-| **Narrative Routing** | Flow selection based on story position | `flowise` + `langflow` |
-| **Creative Archaeology** | Full trace of creative decisions | `langchain` tracing |
+| Pattern                  | Description                                  | Enabled By               |
+| ------------------------ | -------------------------------------------- | ------------------------ |
+| **Arc Tracking**         | Character development monitored across beats | `narrative-intelligence` |
+| **Theme Threading**      | Thematic tensions traced through story       | `narrative-intelligence` |
+| **Emotional Mapping**    | Emotional landscape visualized               | `narrative-intelligence` |
+| **Narrative Routing**    | Flow selection based on story position       | `flowise` + `langflow`   |
+| **Creative Archaeology** | Full trace of creative decisions             | `langchain` tracing      |
 
 ---
 

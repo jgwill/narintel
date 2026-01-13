@@ -23,12 +23,12 @@ The Universal Multi-Backend Router enables creators to:
 
 ### Desired Outcomes
 
-| Outcome | Description | Measurement |
-|---------|-------------|-------------|
-| **Three-Universe Processing** | Every event interpreted 3 ways | All 3 perspectives logged |
-| **Optimal Backend Selection** | Right engine for right task | Performance metrics |
-| **Unified Interface** | Caller doesn't know which backend | API consistency |
-| **Graceful Degradation** | Partial failures don't cascade | Availability % |
+| Outcome                       | Description                       | Measurement               |
+| ----------------------------- | --------------------------------- | ------------------------- |
+| **Three-Universe Processing** | Every event interpreted 3 ways    | All 3 perspectives logged |
+| **Optimal Backend Selection** | Right engine for right task       | Performance metrics       |
+| **Unified Interface**         | Caller doesn't know which backend | API consistency           |
+| **Graceful Degradation**      | Partial failures don't cascade    | Availability %            |
 
 ---
 
@@ -490,23 +490,23 @@ backends:
 
 ## 8. Dependencies
 
-| Dependency | Purpose |
-|------------|---------|
+| Dependency               | Purpose                      |
+| ------------------------ | ---------------------------- |
 | `narrative-intelligence` | NCP state for Story universe |
-| `agentic-flywheel` | Flow selection logic |
-| `narrative-tracing` | Cross-system correlation |
-| `flowise-client` | Flowise backend |
-| `langflow-client` | Langflow backend |
+| `agentic-flywheel`       | Flow selection logic         |
+| `narrative-tracing`      | Cross-system correlation     |
+| `flowise-client`         | Flowise backend              |
+| `langflow-client`        | Langflow backend             |
 
 ---
 
 ## 9. Integration with Other Specifications
 
-| Specification | Integration Point |
-|---------------|-------------------|
+| Specification                      | Integration Point                        |
+| ---------------------------------- | ---------------------------------------- |
 | `narrative-intelligence.langgraph` | Provides NCP analysis for Story universe |
-| `narrative-tracing.langchain` | Receives/emits trace correlation |
-| `agentic-flywheel.flowise` | Flow registry and execution |
+| `narrative-tracing.langchain`      | Receives/emits trace correlation         |
+| `agentic-flywheel.flowise`         | Flow registry and execution              |
 
 ---
 
