@@ -486,10 +486,10 @@ Events emitted: BEAT_GENERATED, EMOTIONAL_QUALITY_ASSESSED, CHARACTER_ARC_UPDATE
 
 ## 11. Cross-Repository Relationships
 
-- **RISE Framework**: https://llms.jgwill.com/llms-rise-framework.txt — The methodological foundation for all specifications
-- **Medicine Wheel**: https://docs.medicine-wheel.jgwill.com/llms.txt — Four Directions framework (East/South/West/North mapping)
-- **Storytelling**: https://storytelling.jgwill.com/llms.txt — Primary downstream consumer of narrative-intelligence toolkit
-- **Workspace**: https://docs.workspace.jgwill.com/llms.txt — Master workspace coordination with companions
+- **Master LLM Index**: https://llms.jgwill.com/llms-full.txt — Guidance portfolio with RISE Framework and narrative craft methodology
+- **RISE Framework**: https://llms.jgwill.com/llms-rise-framework.txt — The methodological foundation for all 24 specifications
+- **Medicine Wheel**: https://docs.medicine-wheel.jgwill.com/llms.txt — Four Directions ontology (Waabinong/Zhaawanong/Epangishmok/Kiiwedinong) — organizational principle for narrative inquiry phases
+- **Storytelling**: https://storytelling.jgwill.com/llms.txt — Primary implementation consumer — imports NCP types via the narrative_intelligence package with COORDINATION documents tracking bidirectional type alignment
 
 ---
 

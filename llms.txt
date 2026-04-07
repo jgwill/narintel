@@ -57,10 +57,10 @@ Synthesis produces unified responses. Ceremony leads when relational obligations
 
 ## Cross-Repository Links
 
-- [RISE Framework](https://llms.jgwill.com/llms-rise-framework.txt)
-- [Medicine Wheel](https://docs.medicine-wheel.jgwill.com/llms.txt)
-- [Storytelling](https://storytelling.jgwill.com/llms.txt)
-- [Workspace](https://docs.workspace.jgwill.com/llms.txt)
+- [Master LLM Index](https://llms.jgwill.com/llms-full.txt): Guidance portfolio — RISE Framework and narrative craft methodology
+- [RISE Framework](https://llms.jgwill.com/llms-rise-framework.txt): Specification methodology governing all 24 rispecs
+- [Medicine Wheel](https://docs.medicine-wheel.jgwill.com/llms.txt): Four Directions ontology — organizational principle for narintel's narrative inquiry phases
+- [Storytelling](https://storytelling.jgwill.com/llms.txt): Primary implementation consumer — imports NCP types via narrative_intelligence package
 
 ## Documentation
 
