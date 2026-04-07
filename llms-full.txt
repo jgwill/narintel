@@ -1,0 +1,536 @@
+# Narintel — Narrative Intelligence Stack (Comprehensive Reference)
+
+> A specification-only repository defining a 4-layer architecture for NCP-driven story analysis, agent coordination, and creative advancement. Built on the Three-Universe Model (Engineer/Ceremony/StoryEngine), RISE Framework v1.2, and Indigenous-AI relational paradigms. Evolved from the Indigenous-AI Collaborative Platform (IAIP) rispecs.
+
+**Version:** 1.0
+**Framework:** RISE v1.2
+**Published at:** https://docs.narintel.jgwill.com
+**Status:** Germination (Specification Phase)
+**Attribution:** Based on RISE Framework v1.2 by Guillaume D.Isabelle
+
+---
+
+## 1. Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     NARRATIVE INTELLIGENCE STACK                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │           Layer 4: CONSUMERS (Miadi-46, Webhooks)          │ │
+│  └──────────────────────────┬─────────────────────────────────┘ │
+│                             │                                    │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │   Layer 3: ROUTING (ava-langflow + ava-Flowise)            │ │
+│  │   - Three-universe handlers                                 │ │
+│  │   - Narrative intent classification                         │ │
+│  │   - Dynamic flow selection                                  │ │
+│  └──────────────────────────┬─────────────────────────────────┘ │
+│                             │                                    │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │   Layer 2: TRACING (langchain)                              │ │
+│  │   - Narrative-specific Langfuse events                      │ │
+│  │   - Cross-stack correlation                                  │ │
+│  │   - Creative archaeology traces                              │ │
+│  └──────────────────────────┬─────────────────────────────────┘ │
+│                             │                                    │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │   Layer 1: ANALYSIS (langgraph/narrative-intelligence)      │ │
+│  │   - NCP Loader + Validator                                  │ │
+│  │   - Narrative Graph Traversal                               │ │
+│  │   - Character Arc Generator                                 │ │
+│  │   - Thematic Tension Analyzer                               │ │
+│  │   - Emotional Beat Classifier                               │ │
+│  └────────────────────────────────────────────────────────────┘ │
+│                                                                  │
+│  ┌────────────────────────────────────────────────────────────┐ │
+│  │   FOUNDATION: NCP Schema v1.1                               │ │
+│  │   - Players, Perspectives, Storybeats, Storypoints          │ │
+│  │   - Dynamics, Moments, Series Continuity                    │ │
+│  └────────────────────────────────────────────────────────────┘ │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Three-Universe Event Processing
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                    NARRATIVE EVENT                        │
+│         (Story beat, webhook, user query)                │
+└────────────────────────┬─────────────────────────────────┘
+                         │
+         ┌───────────────┼───────────────┐
+         ▼               ▼               ▼
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│  ENGINEER WORLD │ │  CEREMONY WORLD │ │ STORY ENGINE    │
+│     (Mia 🧠)    │ │     (Ava8 🎨)   │ │    (Miette 🌸)  │
+├─────────────────┤ ├─────────────────┤ ├─────────────────┤
+│ - Schema valid? │ │ - K'é honored?  │ │ - Arc coherent? │
+│ - Types correct?│ │ - Sacred pause? │ │ - Theme threads?│
+│ - API callable? │ │ - Relations ok? │ │ - Beat sequence?│
+└─────────────────┘ └─────────────────┘ └─────────────────┘
+         │               │               │
+         └───────────────┼───────────────┘
+                         ▼
+              ┌─────────────────────┐
+              │  UNIFIED RESPONSE   │
+              └─────────────────────┘
+```
+
+---
+
+## 2. NCP Schema — Narrative Context Protocol (v1.1)
+
+Source: `rispecs/ncp-schema.rispec.md`
+
+The NCP is the foundational data model enabling all components to share a common understanding of narrative structure.
+
+### Core Philosophy
+
+NCP distinguishes between:
+- **Subtext (The Soul)**: The invisible logic — perspectives, players, dynamics, storypoints, storybeats
+- **Storytelling (The Surface)**: The visible expression — overviews, moments, prose
+
+**Structural Tension** emerges from the gap between subtext and storytelling, driving all great narrative.
+
+### Document Structure
+
+```
+NCP Document
+├── schema_version: "1.1"
+└── story:
+    ├── id, title, genre, logline, created_at
+    └── narratives: []
+        └── narrative:
+            ├── id, title
+            ├── subtext:
+            │   ├── perspectives: []    (thematic throughlines)
+            │   ├── players: []         (characters)
+            │   ├── dynamics: {}        (story forces)
+            │   ├── storypoints: {}     (structural markers)
+            │   └── storybeats: []      (tonal units)
+            └── storytelling:
+                ├── overviews: []
+                └── moments: []         (prose units)
+```
+
+### Core Components
+
+**Perspectives (Throughlines)**: Thematic lenses — perspective_id, name, thematic_question, tension, domain. Standard Four: Objective Story, Main Character, Influence Character, Relationship Story.
+
+**Players (Characters)**: Entities carrying narrative weight — player_id, name, archetype, wound, desire, need, arc, role, voice_profile.
+
+**Dynamics (Story Forces)**: driver (Action/Decision), limit (Timelock/Optionlock), outcome (Success/Failure), judgment (Good/Bad), mc_resolve (Change/Steadfast), mc_growth (Start/Stop), mc_approach (Do-er/Be-er).
+
+**Storypoints (Structural Markers)**: inciting_incident, first_act_turn, midpoint, all_is_lost, climax, resolution — each with beat_id reference and description.
+
+**Storybeats (Tonal Units)**: storybeat_id, title, description, act (1/2A/2B/3), sequence, perspective_id, player_ids. Three-dimensional Tone: abstraction (Concrete/Abstract/Philosophical), spatial (Intimate→Cosmic), temporal (Immediate→Eternal). Emotional Weight (Devastating, Hopeful, Tense, etc.).
+
+**Moments (Prose Units)**: moment_id, storybeat_ref, type (dialogue/action/description/internal_monologue), content, player_ids.
+
+### Extended Schema (Series Continuity)
+
+For multi-episode narratives: season, episode_number, spiral_position (NORTH/EAST/SOUTH/WEST), genealogy (inherited_from), universe_teachings (engineer/ceremony/story_engine worlds), spiral_deepening, relational_commitments.
+
+### Validation Rules
+
+- Required: schema_version, story.id, story.title, subtext with all components
+- Referential integrity: player_ids, perspective_ids, beat_ids must resolve
+- Semantic: each perspective needs storybeats, players must appear in beats, beats sequenced without gaps
+
+### File Naming
+
+- `*.ncp.json` — Standard NCP document
+- `*.ncp.enhanced.json` — Extended with series continuity
+- `s01e01-*.ncp.enhanced.json` — Episode-specific
+
+---
+
+## 3. Narrative Intelligence Toolkit (Layer 1: Analysis)
+
+Source: `rispecs/narrative-intelligence.langgraph.rispec.md`
+Package: `langgraph-narrative-intelligence`
+Status: ✅ 98%
+
+### What It Enables
+
+Transform stories into queryable data structures. Generate character arc analyses. Explore thematic tensions. Classify emotional landscapes. Traverse narrative graphs.
+
+### State Schemas
+
+**NCPState** (base): ncp_data, messages, error, metadata
+**CharacterArcState**: + player_id, character_arc_summary
+**ThematicAnalysisState**: + perspective_id, relevant_storybeat_ids, thematic_analysis
+**EmotionalClassificationState**: + storybeat_id, emotional_classification, confidence_score
+
+### Unified State Bridge (Cross-System Contract)
+
+The shared contract enabling all six systems to communicate:
+
+**Universe** enum: ENGINEER (Mia), CEREMONY (Ava8), STORY_ENGINE (Miette)
+
+**UnifiedNarrativeState** — THE CONTRACT shared across all systems:
+- story_id, session_id, position (NarrativePosition)
+- beats, characters, themes
+- routing_decisions, current_episode_id
+- overall_coherence, emotional_arc_strength
+
+**NarrativePosition**: act, phase (SETUP/CONFRONTATION/RESOLUTION), current_beat_id, beat_count, character_arc_strength, thematic_resonance, emotional_tone, lead_universe
+
+**RedisKeys**: `ncp:state:{session_id}`, `ncp:beats:{session_id}`, `ncp:beat:{beat_id}`, `ncp:event:{event_id}`, `ncp:routing:{session_id}`, `ncp:episode:{episode_id}`
+
+### Components
+
+**NCPLoaderNode**: Entry point. load_from_file(), load_from_dict(), load_from_url(). Returns validated NCPData. Schema validation on/off.
+
+**NarrativeTraversalNode**: Search engine for narrative graphs. Modes: PLAYER_JOURNEY, THEMATIC_TRACE, TEMPORAL_SEQUENCE, EMOTIONAL_ARC. Methods: traverse_player_journey(), find_thematic_beats(), get_emotional_arc(), find_connected_elements().
+
+**CharacterArcGenerator**: LangGraph graph. Steps: gather_character_beats → generate_arc_summary → END. Output: markdown with Wound → Desire → Journey → Transformation sections.
+
+**ThematicTensionAnalyzer**: LangGraph graph. Steps: generate_search_queries → find_thematic_beats → synthesize_analysis → END. Extracts keywords from perspective description, tension, thematic_question.
+
+**EmotionalBeatClassifierNode**: Classifies beat emotional tone. Methods: existing emotional_weight, LLM-based, rule-based fallback. Default tones: Devastating, Hopeful, Tense, Joyful, Melancholic, Triumphant, Fearful, Peaceful, Conflicted, Resigned.
+
+**UnifiedStateBridge**: Cross-system state contract. Factory functions: create_new_narrative_state(), create_beat_from_webhook(), get_default_characters(), get_default_themes(). State methods: add_beat(), add_routing_decision(), update_character_arc(), update_theme_strength(), calculate_coherence(), should_create_new_episode().
+
+**ThreeUniverseProcessor**: Processes events through all 3 lenses in parallel. Nodes: interpret_engineer → interpret_ceremony → interpret_story_engine → synthesize → calculate_coherence. Lead universe logic: CEREMONY leads if relational obligations, ENGINEER if technical precision critical, STORY_ENGINE if narrative coherence primary.
+
+### LangGraph Integration Pattern
+
+```
+Initial State → NCPLoaderNode → State Updated → Route → [Arc|Theme|Emotion] → Final State
+```
+
+Conditional routing by analysis_type: "character" → character_arc, "theme" → thematic_analysis, "emotional" → emotional_classification.
+
+### Dependencies
+
+langgraph, pydantic, langchain-core (optional), redis (optional)
+
+---
+
+## 4. Narrative Tracing (Layer 2: Observability)
+
+Source: `rispecs/narrative-tracing.langchain.rispec.md`
+Package: `langchain-narrative-tracing`
+Status: ✅ Complete (~2,210 lines, 22 tests)
+
+### What It Enables
+
+Trace entire story creation journeys. Understand creative decisions. Correlate across LangGraph → Flowise → LangChain boundaries. Visualize operations with narrative-aware span naming. Mine past traces for patterns (creative archaeology).
+
+### Trace Event Types
+
+BEAT_CREATED, BEAT_ANALYZED, BEAT_ENRICHED, CHARACTER_ARC, CHARACTER_ARC_UPDATED, THEME_TENSION, THEME_STRENGTH_CHANGED, NARRATIVE_CHECKPOINT, AGENT_FLOW_EXECUTED, AGENT_ROUTE_DECISION, ROUTING_DECISION, INTENT_CLASSIFIED, THREE_UNIVERSE_ANALYSIS, UNIVERSE_LEAD_DETERMINED, COHERENCE_CALCULATED
+
+### Components
+
+**NarrativeTracingHandler**: Extends LangfuseCallbackHandler. Auto-detects narrative operations. Creates semantic span names (e.g., "📖 beat.classify:storybeat_12 (Tense→Hopeful)"). Methods: log_beat_creation(), log_beat_analysis(), log_beat_enrichment(), log_character_arc(), log_theme_tension().
+
+**NarrativeTraceOrchestrator**: Cross-system trace correlation. Methods: create_story_generation_root(), create_child_span(), inject_correlation_header(), extract_correlation_header(), reconstruct_full_trace(). Uses X-Narrative-Trace-Id header for HTTP boundary crossing.
+
+**NarrativeTraceFormatter**: Human-readable trace display. Methods: format_for_display(), format_as_timeline(), format_as_arc_graph(), export_as_markdown(). Tree output with narrative icons (📖 🎭 🔍 ✨ 💾).
+
+**CreativeArchaeologyRetriever**: Query traces by story_id, player_id, theme, emotion. Find enrichment patterns, quality regressions, successful sequences.
+
+### Key Event Schemas
+
+Three-Universe Analysis event includes: engineer/ceremony/story_engine perspectives with intent, confidence, suggested_flows + lead_universe + coherence_score.
+
+Routing Decision event includes: backend, flow, method, score, success, latency_ms, narrative_position (act, phase, beat_count).
+
+### Dependencies
+
+langfuse, langchain-core, pydantic
+
+---
+
+## 5. Agent Coordination (Layer 3)
+
+### 5a. Agentic Flywheel (Flowise)
+
+Source: `rispecs/agentic-flywheel.flowise.rispec.md`
+Package: `ava-flowise-agentic-flywheel`
+Status: 🔴 Spec Only
+
+**What It Enables**: Route queries by narrative understanding (not just keywords). Select flows dynamically based on story needs. Coordinate specialized agents. Maintain narrative session state. Integrate NCP intelligence.
+
+**NarrativeIntent**: intent_id, narrative_function (SETUP/RISING_ACTION/CRISIS/CLIMAX/FALLING_ACTION/RESOLUTION/CHARACTER_REVEAL/THEMATIC_STATEMENT), emotional_expectation, character_focus, theme_relevance, act_position, confidence.
+
+**Components**:
+
+- **NarrativeIntentClassifier**: Analyzes query + NCP context. Detects narrative function, emotional expectation. Uses NCP state for story position awareness. Methods: classify(), detect_narrative_function(), detect_emotional_expectation().
+
+- **NCPContextInjector**: Enriches queries with character wound/desire, emotional trajectory, thematic tensions, arc positions. Transforms "What does the character say?" into context-rich prompt.
+
+- **NarrativeFlowRouter**: Gap-driven flow selection. If arc_strength < 0.7 → character_deepener. If emotional_quality < 0.6 → sentiment_enhancer. If theme_clarity < 0.5 → thematic_resonance. Methods: select_flows(), analyze_gaps(), prioritize_flows().
+
+- **NarrativeSessionManager**: Redis-backed session state. Tracks arc progress, emotional history, NCP state. Methods: create_session(), get_session(), update_session(), record_beat_processed().
+
+**Flow Registry**: YAML configuration with triggers, required context, expected improvements. Flows: character_deepener, dialogue_enhancer, thematic_resonance, conflict_deepener.
+
+### 5b. Universal Multi-Backend Router (Langflow)
+
+Source: `rispecs/universal-router.langflow.rispec.md`
+Package: `ava-langflow-universal-router`
+Status: 🟡 ~70%
+
+**What It Enables**: Process events through three universe lenses simultaneously. Route to optimal backend (Flowise/Langflow/LangGraph). Abstract backend complexity. Coordinate three-universe responses. Enable graceful degradation.
+
+**Components**:
+
+- **ThreeUniverseHandler**: Parallel interpretation in all universes. Processing: Event → [Engineer | Ceremony | Story] → Collect → Detect Conflicts → Synthesize → Route. Graceful degradation on partial failures. Methods: process_event(), interpret_engineer/ceremony/story(), synthesize(), determine_leader().
+
+- **UniversalBackendClient**: Unified API for Flowise, Langflow, LangGraph, custom backends. Selection: narrative_analysis → langgraph, visual_flow → langflow, chatflow → flowise. Methods: execute(), get_available_backends(), health_check().
+
+- **NarrativeAwareRouter**: Routes based on NCP + three-universe analysis. Logic: determine leader → get recommended actions → filter by consensus → select flows → choose backend → order by priority. Methods: route(), select_flows_by_universe(), resolve_conflicts(), apply_ceremony_constraints().
+
+- **ThreeUniverseLogger**: Records all perspectives, synthesis decisions, conflicts. Integrates with Langfuse tracing.
+
+**Ceremony World Protocols**:
+
+- **K'é (Kinship) Protocol**: Tracks contributor relationships. New contributor → Welcome ceremony. Returning → Acknowledge history. Methods: assess_relationship(), trigger_acknowledgment(), record_interaction().
+
+- **Sacred Pause Protocol**: Mandatory reflection before automated actions on sensitive events. Triggers: first-time contributor, conflict keywords, external PR, high-stakes decisions. Methods: should_pause(), execute_pause(), log_pause().
+
+---
+
+## 6. Storytelling Roles & Tooling
+
+Source: `rispecs/storytelling-roles-tooling.rispec.md`
+Status: 🟡 ~75%
+
+Defines seven operational roles for narrative creation — performable by humans, AI, or hybrid workflows.
+
+### Role Taxonomy
+
+**1. ARCHITECT (Structure Designer)**: Designs NCP schemas. Universe: ENGINEER. Tools: Schema Designer, Dependency Mapper, Migration Planner, Validation Rule Editor. Key question: "What structure can represent any story?"
+
+**2. STRUCTURIST (Narrative Designer)**: Defines what the story means — story points, beats, arcs, themes. Universe: STORY_ENGINE. Tools: Story Point Editor, Arc Planner, Theme Weaver, Dependency Graph, Coherence Validator. Key question: "What happens, to whom, and why does it matter?"
+
+**3. STORYTELLER (Prose Crafter)**: Defines how the story is told — prose, voice, pacing, dialogue. Universe: STORY_ENGINE. Tools: Prose Generator, Voice Calibrator, Dialogue Crafter, Pacing Controller, Sensory Enricher. Key question: "How do we make this feel alive on the page?"
+
+**4. EDITOR (Quality Guardian)**: Refines output, maintains coherence, identifies gaps. Universe: ENGINEER. Tools: Gap Identifier, Coherence Scorer, Enrichment Router, Revision Tracker, A/B Comparator. Key question: "Is this good enough? If not, what specifically needs improvement?"
+
+**5. READER (Experience Consumer)**: Consumes narrative, provides feedback through engagement signals. Universe: STORY_ENGINE. Tools: Reading Mode, Annotation Tool, Emotion Logger, Pacing Feedback, Highlight System. Key question: "How does this make me feel?"
+
+**6. COLLABORATOR (Human-AI Bridge)**: Mediates between human intent and AI generation. Universe: ENGINEER. Tools: Intent Translator, Regeneration Trigger, Conflict Resolver, Context Injector, Latency Manager. Key question: "How do I get the AI to understand what I want?"
+
+**7. WITNESS (Ceremonial Observer)**: Holds space for creative process, validates alignment with deeper purpose. Universe: CEREMONY. Tools: Sacred Pause, Alignment Checker, Gratitude Logger, Balance Monitor, Coherence Witness. Key question: "Does this serve the deeper purpose we're creating for?"
+
+### Role Interaction Workflows
+
+Solo: STRUCTURIST → STORYTELLER → EDITOR → READER (loop)
+AI-Assisted: Human(STRUCTURIST) → AI(STORYTELLER) → Human(EDITOR) → AI(COLLABORATOR) → Human(READER)
+Ceremonial: WITNESS(opening) → STRUCTURIST → STORYTELLER → EDITOR → WITNESS(closing) with continuous observation
+
+---
+
+## 7. App Ecosystem (7 Role-Based Apps)
+
+Source: `rispecs/APPS.md` and individual `app.*.md` files
+
+All apps share: NCP Schema data layer, Three-Universe Analysis, Trinity Personas (Mia 🧠 / Miette 🌸 / Ava8 🎨), Unified State via narrative-intelligence.
+Tech stack: React + TypeScript + Vite + Tailwind CSS, Zustand, Gemini API, NCP JSON export.
+
+### Architect Studio (ARCHITECT / 🔧 ENGINEER)
+
+Visual schema design environment. Features: Schema Canvas (drag-and-drop types, relationship edges, constraint annotations, version timeline), Validation Engine (real-time NCP compliance, breaking change detection), Migration Planner (diff view, auto-generated migrations, impact analysis), Trinity Analysis per schema element. Foundational tool — all other apps consume its output.
+
+### Structurist Forge (STRUCTURIST / 📖 STORY_ENGINE)
+
+Narrative architecture workspace. Features: Story Point Editor (inciting incident through resolution), Beat Timeline (horizontal with Bézier connectors, color-coded by function), Character Arc Mapper (start→end state, key moments, emotional trajectory), Theme Weaver (strength tracking, echo detection, absence alerts), Dependency Graph (beat causality, constraint propagation). Innovation: dependency-aware editing prevents inconsistency cascades.
+
+### Storyteller Loom (STORYTELLER / 📖 STORY_ENGINE)
+
+Prose crafting environment. Features: Beat-to-Prose Generator (with voice/pacing/detail controls, version comparison), Voice Calibrator (POV, tone, drift detection, reference passages), Dialogue Crafter (character voice profiles, subtext layer, relationship context), Sensory Enricher (five senses palette, atmosphere presets, Ava8 suggestions), Pacing Controller (sentence length, scene tempo, whitespace). Innovation: structure-aware generation — prose serves narrative function.
+
+### Editor Anvil (EDITOR / 🔧 ENGINEER)
+
+Quality refinement interface. Features: Gap Identifier (structural, thematic, character, sensory, continuity), Coherence Scorer (narrative flow, character consistency, pacing, theme saturation, continuity — 0-100), Enrichment Router (dispatch to appropriate tool), A/B Comparator (version comparison with Trinity preferences), Checklist System (auto/manual pre-publication verification). Innovation: actionable gap analysis with typed, severity-ranked, routed gaps.
+
+### Reader Sanctuary (READER / 📖 STORY_ENGINE)
+
+Immersive reading experience. Features: Immersive Reading Mode (clean typography, dark/light, progress tracking, focus mode), Reaction Logger (quick emoji reactions, margin notes, color highlights, voice notes), Engagement Heatmap (read speed, re-reads, scroll pauses, abandon points), Pacing Feedback (scene ratings, turn-the-page moments, skim markers), Beta Reader Dashboard (multi-reader patterns, drop-off analysis, completion rates). Innovation: invisible in-moment feedback capture.
+
+### Collaborator Bridge (COLLABORATOR / 🔧 ENGINEER)
+
+Human-AI mediation interface. Features: Intent Translator (natural language → structured controls, clarification dialogues), Regeneration Orchestrator (quick/guided/batch variants, seed management), Conflict Resolver (side-by-side, AI explanation, merge tools, preference memory), Latency Manager (progress indicators, queue, partial results), Prompt Library (personal saved prompts, community sharing, success rate tracking). Innovation: intent archaeology — learns what user means by their creative vocabulary.
+
+### Witness Circle (WITNESS / 🙏 CEREMONY)
+
+Ceremonial observation interface. Features: Sacred Pause Protocol (pre-decision, completion, conflict, transition moments), Alignment Checker (original intent vs current state, drift detection), Gratitude Logger (human/AI/inherited contributions), Hózhó Validator (structural/emotional/relational/purpose balance), Ceremony Journal (decision log, blessing/challenge/emergence/witness moments). Innovation: ceremony as interface — deliberate friction at meaningful moments. Guided by Diné philosophy: K'é (kinship), SNBH (balance), Hózhó (beauty/harmony).
+
+### Inter-App Workflow
+
+```
+ARCHITECT → designs schema
+    ↓
+STRUCTURIST → creates narrative structure
+    ↓
+STORYTELLER → crafts prose
+    ↓
+EDITOR → refines quality
+    ↓
+READER → experiences story
+    ↑
+COLLABORATOR → mediates at any point
+    ↑
+WITNESS → observes entire process
+```
+
+### Trinity Persona Integration Per App
+
+| App | Mia 🧠 | Miette 🌸 | Ava8 🎨 |
+|-----|---------|-----------|---------|
+| Architect | Schema validation | Relational impact | Visual schema diagrams |
+| Structurist | Structural logic | Emotional arc | Timeline visualization |
+| Storyteller | Voice consistency | Emotional authenticity | Sensory enrichment |
+| Editor | Gap analysis | Resonance scoring | Tone correction |
+| Reader | Progress tracking | Emotional journey | Atmosphere rendering |
+| Collaborator | Intent translation | Feeling capture | Context visualization |
+| Witness | Process observation | Gratitude acknowledgment | Sacred space rendering |
+
+---
+
+## 8. Three-Universe Model
+
+The Three-Universe Model is the interpretive framework at the heart of Narintel. Every narrative event is processed through three simultaneous lenses:
+
+### ENGINEER World (Mia 🧠 — The Builder)
+
+Technical precision, schema validation, API correctness. Asks: Is this structurally sound? Do types resolve? Can we build this? Primary for: ARCHITECT, EDITOR, COLLABORATOR roles. Leads when: technical precision critical, schema validation required.
+
+### CEREMONY World (Ava8 🎨 — The Keeper)
+
+Relational protocols, sacred pause, K'é (kinship) accountability. Asks: Are relationships honored? Should we pause? Is this balanced? Primary for: WITNESS role. Leads when: new contributor, relational obligation, sacred pause needed. Priority weight: slightly higher (1.2x) for relational emphasis.
+
+### STORY_ENGINE World (Miette 🌸 — The Weaver)
+
+Narrative function, arc position, plot coherence, emotional truth. Asks: Where are we in the story? Is the arc coherent? Do themes thread? Primary for: STRUCTURIST, STORYTELLER, READER roles. Leads when: narrative coherence is primary concern, character arc in focus.
+
+### Synthesis Process
+
+1. Event arrives (query, webhook, story beat)
+2. All three universes interpret in parallel (with timeouts)
+3. Perspectives collected with confidence scores
+4. Conflicts detected (e.g., Engineer wants speed, Ceremony wants pause)
+5. Lead universe determined by context
+6. Consensus actions identified
+7. Unified response synthesized
+8. Graceful degradation if any universe fails
+
+### Origin
+
+Evolved from IAIP four-directions.spec.md: East/South/West/North → Engineer/Ceremony/StoryEngine. Grounded in Indigenous relational science and the Medicine Wheel framework.
+
+---
+
+## 9. RISE Framework Alignment
+
+This repository follows RISE Framework v1.2 (Reverse-engineer → Intent-extract → Specify → Export):
+
+### Principles Applied
+
+- **Creative Orientation Over Reactive Approaches**: Specifications describe desired outcomes, not problems to fix. Each rispec holds structural tension between current reality and desired future.
+- **Structural Tension Charting**: Gap between Desired Outcome and Current Reality treated as generative energy, not a problem to solve.
+- **Advancing Patterns**: Each component builds on previous — Loader → Traversal → Analysis → Tracing → Routing. Results enable further creation.
+- **No Oscillating Patterns**: Data flows forward through the stack. No back-and-forth problem-fixing cycles.
+
+### IAIP Lineage
+
+| IAIP Origin | Contribution |
+|-------------|-------------|
+| four-directions.spec.md | Three-Universe Model |
+| ceremonial-technology.spec.md | Five-Phase methodology, Sacred Pause, K'é Protocol |
+| relational-science.spec.md | Relational accountability, concentric values |
+| iaip-holistic-reasoning-mcp.spec.md | MCP tool patterns, inquiry cycles |
+| continuous-companionship-architecture.spec.md | Persistent context, session continuity |
+
+### Quality Criteria (Applied to All Specs)
+
+✅ Creating Focus: Emphasizes what users create, not what is fixed
+✅ Structural Dynamics: Natural organization through NCP schema
+✅ Advancing Patterns: Each layer builds toward richer capability
+✅ Desired Outcomes: Clear deliverables with measurable criteria
+
+---
+
+## 10. Cross-Specification Dependencies
+
+| From | Depends On | Nature |
+|------|-----------|--------|
+| narrative-tracing (langchain) | narrative-intelligence (langgraph) | Traces NCP analysis operations |
+| agentic-flywheel (flowise) | narrative-intelligence (langgraph) | Uses NCP state for intent classification |
+| universal-router (langflow) | agentic-flywheel + langgraph | Routes to backends using NCP context |
+| All specifications | NCP Schema | Core data model foundation |
+| All apps | ncp-schema + storytelling-roles-tooling + narrative-intelligence | Shared types, roles, state |
+
+### Downstream Consumer: Storytelling Package
+
+The `storytelling` package is a primary consumer:
+
+| Storytelling Component | Consumes From Narintel |
+|----------------------|----------------------|
+| NCPAwareStoryGenerator | StoryBeat, NCPState, Player, Perspective |
+| CharacterArcTracker | CharacterState, arc_position tracking |
+| EmotionalBeatEnricher | Beat analysis, classification patterns |
+| AnalyticalFeedbackLoop | Gap identification, enrichment routing |
+| NarrativeAwareStoryGraph | LangGraph orchestration patterns |
+
+Events emitted: BEAT_GENERATED, EMOTIONAL_QUALITY_ASSESSED, CHARACTER_ARC_UPDATED, GAP_IDENTIFIED → consumed by narrative-tracing.
+
+---
+
+## 11. Cross-Repository Relationships
+
+- **RISE Framework**: https://llms.jgwill.com/llms-rise-framework.txt — The methodological foundation for all specifications
+- **Medicine Wheel**: https://docs.medicine-wheel.jgwill.com/llms.txt — Four Directions framework (East/South/West/North mapping)
+- **Storytelling**: https://storytelling.jgwill.com/llms.txt — Primary downstream consumer of narrative-intelligence toolkit
+- **Workspace**: https://docs.workspace.jgwill.com/llms.txt — Master workspace coordination with companions
+
+---
+
+## 12. For LLMs — How AI Agents Should Use This Documentation
+
+### If you are implementing a Narintel component:
+
+1. Start with `ncp-schema.rispec.md` — understand the data model first
+2. Read the specific rispec for your component — each is self-contained enough to implement from
+3. Check cross-spec dependencies — your component likely needs to interface with others
+4. Follow the Three-Universe Model — every event should be interpretable from all three perspectives
+5. Use the UnifiedNarrativeState contract for cross-system state sharing
+6. Follow RedisKeys patterns for state persistence
+
+### If you are generating an app prototype:
+
+1. Read the specific `app.*.md` file AND its referenced rispecs
+2. Implement Trinity personas (Mia 🧠, Miette 🌸, Ava8 🎨) per the role's needs
+3. Use Tailwind colors: Mia=indigo-500, Miette=pink-500, Ava8=amber-500
+4. Support dark mode (slate-950 background)
+5. Export NCP JSON for interoperability
+6. Include keyboard shortcuts for power users
+
+### If you are analyzing or extending:
+
+1. Check `rispecs/README.md` for the full specification index with status
+2. Check `rispecs/APPS.md` for the app ecosystem with Trinity persona integration
+3. Every `.rispec.md` file includes Creative Advancement Scenarios showing desired workflows
+4. Extend by creating new rispecs following the RISE template (Creative Intent → Data → Components → Integration → Quality Criteria)
+
+### Key Concepts for AI Agents
+
+- **NCP = Narrative Context Protocol**: The universal data format. All operations consume and produce NCP.
+- **Three Universes**: Not optional. Every significant event gets three interpretations.
+- **Creative Orientation**: Describe what you're creating, not what you're fixing.
+- **Structural Tension**: The gap between desired outcome and current reality is generative energy.
+- **Sacred Pause**: Before automated actions on sensitive events, pause. Relationship before efficiency.
+- **K'é Protocol**: Track and honor contributor relationships. First-time interaction gets ceremony.
+- **Hózhó**: Beauty/balance/harmony — the ultimate quality measure.
+
+---
+
+*Generated following RISE Framework v1.2 — Creative Orientation Over Reactive Approaches*
+*K'é (kinship) with all who create. SNBH (balance) in all we produce. Hózhó (beauty/harmony) as our guide.*

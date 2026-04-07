@@ -1,0 +1,69 @@
+# Narintel — Narrative Intelligence Stack
+
+> A specification-only repository defining a 4-layer architecture for NCP-driven story analysis, agent coordination, and creative advancement. Built on the Three-Universe Model (Engineer/Ceremony/StoryEngine), RISE Framework v1.2, and Indigenous-AI relational paradigms. Evolved from the Indigenous-AI Collaborative Platform (IAIP) rispecs.
+
+**Version:** 1.0
+**Framework:** RISE v1.2
+**Published at:** https://docs.narintel.jgwill.com
+**Status:** Germination (Specification Phase)
+**Attribution:** Based on RISE Framework v1.2 by Guillaume D.Isabelle
+
+## Architecture (4 Layers)
+
+- [Layer 1 — Analysis](./rispecs/narrative-intelligence.langgraph.rispec.md): `narrative-intelligence` (LangGraph) — Core NCP analysis toolkit with nodes and graphs. NCP Loader, Narrative Traversal, Character Arc Generator, Thematic Tension Analyzer, Emotional Beat Classifier, Unified State Bridge.
+- [Layer 2 — Tracing](./rispecs/narrative-tracing.langchain.rispec.md): `narrative-tracing` (LangChain/Langfuse) — Narrative-aware observability. Semantic span naming, cross-stack correlation, creative archaeology.
+- [Layer 3 — Coordination](./rispecs/agentic-flywheel.flowise.rispec.md): `agentic-flywheel` (Flowise) — Narrative intent classification, NCP context injection, quality-driven flow selection.
+- [Layer 3 — Routing](./rispecs/universal-router.langflow.rispec.md): `universal-router` (Langflow) — Three-universe event processing, multi-backend abstraction, K'é/Sacred Pause protocols.
+
+## Foundation
+
+- [NCP Schema](./rispecs/ncp-schema.rispec.md): Narrative Context Protocol v1.1 — Core data model. Players, Perspectives, Storybeats, Storypoints, Dynamics, Moments. Subtext (soul) vs Storytelling (surface).
+
+## App Ecosystem (7 Role-Based Apps)
+
+| App | Role | Universe | Key Question |
+|-----|------|----------|-------------|
+| [Architect Studio](./rispecs/app.architect-studio.md) | ARCHITECT | 🔧 ENGINEER | What structure can represent any story? |
+| [Structurist Forge](./rispecs/app.structurist-forge.md) | STRUCTURIST | 📖 STORY_ENGINE | What happens, to whom, and why? |
+| [Storyteller Loom](./rispecs/app.storyteller-loom.md) | STORYTELLER | 📖 STORY_ENGINE | How do we make this feel alive? |
+| [Editor Anvil](./rispecs/app.editor-anvil.md) | EDITOR | 🔧 ENGINEER | Is this good enough? What needs improvement? |
+| [Reader Sanctuary](./rispecs/app.reader-sanctuary.md) | READER | 📖 STORY_ENGINE | How does this make me feel? |
+| [Collaborator Bridge](./rispecs/app.collaborator-bridge.md) | COLLABORATOR | 🔧 ENGINEER | How do I get the AI to understand what I want? |
+| [Witness Circle](./rispecs/app.witness-circle.md) | WITNESS | 🙏 CEREMONY | Does this serve the deeper purpose? |
+
+## Core Specifications
+
+- [ncp-schema.rispec.md](./rispecs/ncp-schema.rispec.md): Narrative Context Protocol — core data model
+- [narrative-intelligence.langgraph.rispec.md](./rispecs/narrative-intelligence.langgraph.rispec.md): NCP analysis toolkit (LangGraph)
+- [narrative-tracing.langchain.rispec.md](./rispecs/narrative-tracing.langchain.rispec.md): Narrative-aware tracing (Langfuse)
+- [agentic-flywheel.flowise.rispec.md](./rispecs/agentic-flywheel.flowise.rispec.md): Narrative intent classification (Flowise)
+- [universal-router.langflow.rispec.md](./rispecs/universal-router.langflow.rispec.md): Three-universe routing (Langflow)
+- [storytelling-roles-tooling.rispec.md](./rispecs/storytelling-roles-tooling.rispec.md): Seven roles and their tool needs
+
+## Three-Universe Model
+
+Every narrative event flows through three interpretive lenses simultaneously:
+- **ENGINEER (Mia 🧠)**: Schema valid? Types correct? API callable?
+- **CEREMONY (Ava8 🎨)**: K'é honored? Sacred pause? Relations ok?
+- **STORY_ENGINE (Miette 🌸)**: Arc coherent? Theme threads? Beat sequence?
+
+Synthesis produces unified responses. Ceremony leads when relational obligations exist.
+
+## Trinity Personas
+
+- **Mia 🧠**: Structural architect — schema validation, gap analysis, technical precision
+- **Miette 🌸**: Emotional illuminator — arc resonance, narrative truth, relational echo
+- **Ava8 🎨**: Atmospheric presence — sensory enrichment, visual/spatial rendering, sacred space
+
+## Cross-Repository Links
+
+- [RISE Framework](https://llms.jgwill.com/llms-rise-framework.txt)
+- [Medicine Wheel](https://docs.medicine-wheel.jgwill.com/llms.txt)
+- [Storytelling](https://storytelling.jgwill.com/llms.txt)
+- [Workspace](https://docs.workspace.jgwill.com/llms.txt)
+
+## Documentation
+
+- [llms-full.txt](./llms-full.txt): Comprehensive AI reference with all specifications
+- [rispecs/README.md](./rispecs/README.md): Specification index with architecture diagrams
+- [rispecs/APPS.md](./rispecs/APPS.md): App ecosystem index with Trinity persona integration
